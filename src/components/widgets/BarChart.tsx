@@ -11,6 +11,7 @@ import {
     Cell,
 } from "recharts";
 import type { TooltipContentProps } from "recharts";
+import type { ValueType, NameType } from "recharts/types/component/DefaultTooltipContent";
 
 export type BarItem = {
     label?: string;
@@ -170,7 +171,7 @@ export default function CustomBarChart({
         </div>
     );
 }
-const CustomTooltip = ({ active, payload }: TooltipContentProps<number, string>) => {
+const CustomTooltip = ({ active, payload }: TooltipContentProps<ValueType, NameType>) => {
     if (!active || !payload || payload.length === 0) return null;
 
     const data = payload[0]?.payload as BarItem | undefined;
