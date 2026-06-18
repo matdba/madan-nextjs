@@ -1,0 +1,62 @@
+@config "../../tailwind.config.mjs";
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+@import "tailwindcss";
+
+/* @plugin "tailwindcss-animate"; */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #80ed99;
+  --color-secondary: #FCEFB4;
+  --color-accent: #00e676;
+  --color-card-light: #ffffff;
+  --color-card-dark: #1b263b;
+  --color-background-light: oklch(98.5% 0.002 247.839);
+  --color-background-dark: #0d1b2a;
+  --color-gray-light: oklch(96% 0.003 264.542);
+  --color-gray-dark: oklch(32% 0.034 259.733);
+}
+
+:root {
+  --app-height: 100dvh;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  background: var(--color-background-light);
+}
+
+.dark body {
+  background: var(--color-background-dark);
+}
+
+body {
+  min-height: 100dvh;
+  min-height: 100lvh;
+}
+
+.custom-box {
+  margin: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 500px;
+  border: 1px solid;
+  border-radius: 100px;
+  overflow: hidden;
+  transform: rotate(45deg);
+}
+
+.custom-box-img {
+  transform: rotate(-45deg);
+  width: 141%;
+  height: 141%;
+  flex-shrink: 0;
+}

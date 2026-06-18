@@ -1,0 +1,75 @@
+import { z } from "zod"
+import { CitySchema } from "./city-list.schema";
+import { TruckSchema } from "./truck-list.schema";
+
+const NullableStringSchema = z.string().nullable().catch(null);
+
+export const DriverDetailsSchema = z.object({
+  result: z.boolean().catch(false),
+  message: z.string().catch(""),
+  data: z.object({
+    Subscription: z.boolean().catch(false),
+    subscription_days_left: z.number().catch(0),
+    is_profile_completed: z.string().catch("false"),
+    profile: z.object({
+      id: z.number().catch(0),
+      user_id: z.number().catch(0),
+      truck_owner_id: z.number().nullable().catch(null),
+      number_of_subscriptions_purchased: z.number().catch(0),
+      national_code: z.string().catch(""),
+      smart_card: z.string().catch(""),
+      license_plate_part_a: z.string().catch(""),
+      license_plate_part_b: z.string().catch(""),
+      license_plate_part_c: z.string().catch(""),
+      license_plate_part_d: z.string().catch(""),
+      sms_status: z.boolean().catch(false),
+      register_status: z.boolean().catch(false),
+      active_date: NullableStringSchema,
+      last_activity_date: NullableStringSchema,
+      fcm_token: NullableStringSchema,
+      created_at: z.string().catch(""),
+      updated_at: z.string().catch(""),
+      last_seen_cargo_id: z.number().nullable().catch(null),
+      is_profile_complete: z.boolean().catch(false),
+      wallet: z.number().nullable().catch(null),
+      birth_date: NullableStringSchema,
+      sign_up_way: z.string().catch(""),
+      pay_success: z.number().catch(0),
+      pay_failed: z.number().catch(0),
+      last_contact_date: z.string().catch(""),
+      total_cargos_count: z.number().catch(0),
+      user: z.object({
+        id: z.number().catch(0),
+        name: z.string().catch(""),
+        last_name: z.string().catch(""),
+        mobile_number: z.string().catch(""),
+        present_code: NullableStringSchema,
+        presenter_code: NullableStringSchema,
+        wallet: z.number().catch(0),
+        refah_wallet: z.number().catch(0),
+        national_code: z.string().catch(""),
+        fcm_token: NullableStringSchema,
+        email: NullableStringSchema,
+        avatar: NullableStringSchema,
+        email_verified_at: NullableStringSchema,
+        last_seen: NullableStringSchema,
+        created_at: z.string().catch(""),
+        updated_at: z.string().catch(""),
+        is_driver: z.boolean().catch(false),
+        is_admin: z.boolean().catch(false),
+        today_activity: z.string().catch(""),
+        previous_activity: z.string().catch(""),
+        role: NullableStringSchema,
+      }),
+      truck: TruckSchema,
+      city: CitySchema,
+    }),
+    last_cargo: z.array(z.unknown()).catch([]),
+    activites: z.array(z.unknown()).catch([]),
+    cargos_count: z.number().catch(0),
+    city: CitySchema,
+    truck: TruckSchema,
+  })
+})
+
+export type DriverDetailsType = z.infer<typeof DriverDetailsSchema>;
