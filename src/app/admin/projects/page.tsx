@@ -178,6 +178,7 @@ export default function AdminProjects() {
 	}, []);
 
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		fetchProjects();
 		fetchUsers();
 	}, [fetchProjects, fetchUsers]);

@@ -128,6 +128,7 @@ export default function AdminDrivers() {
 	}, []);
 
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		fetchDrivers();
 		fetchMachineTypes();
 	}, [fetchDrivers, fetchMachineTypes]);

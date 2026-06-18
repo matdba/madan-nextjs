@@ -113,6 +113,7 @@ export default function AdminMachineTypes() {
 	}, []);
 
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		fetchMachineTypes();
 	}, [fetchMachineTypes]);
 
